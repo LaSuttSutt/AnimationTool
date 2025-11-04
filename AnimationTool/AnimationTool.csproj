@@ -8,4 +8,17 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+      <PackageReference Include="MahApps.Metro" Version="3.0.0-rc0529" />
+      <PackageReference Include="System.Drawing.Common" Version="10.0.0-rc.2.25502.107" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Images\Default.png" />
+      <Resource Include="Images\Default.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
 </Project>

@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="AnimationTool.CombineSprites.CombineSprites"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AnimationTool.CombineSprites"
+             d:DataContext="{d:DesignInstance Type=local:CombineSpritesViewModel}"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Load Sprites -->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <Button Grid.Row="0" 
+                    Margin="10"
+                    Content="Load Sprites" 
+                    FontSize="{StaticResource MediumFontSize}" 
+                    Command="{Binding LoadSpritesCommand}"/>
+            
+            <ListBox Grid.Row="1" 
+                     Margin="10 0 10 10" 
+                     BorderBrush="Gray" 
+                     BorderThickness="1"
+                     Height="200" 
+                     Width="200"
+                     ItemsSource="{Binding Sprites}"
+                     SelectedItem="{Binding SelectedSprite}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Key}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+            <Border Grid.Row="2"
+                    BorderBrush="Gray"
+                    BorderThickness="1"
+                    Margin="10 0 10 10"
+                    Width="200"
+                    Height="200">
+                <Image Source="{Binding ImageSource}" Stretch="None"/>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
