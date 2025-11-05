@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
@@ -7,6 +8,7 @@ using System.Windows.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
+using Color = System.Drawing.Color;
 
 namespace AnimationTool.CombineSprites;
 
@@ -22,6 +24,9 @@ public partial class CombineSpritesViewModel : ObservableObject
     public RelayCommand LoadSpritesCommand { get; }
     public RelayCommand IncreaseGroundCommand { get; }
     public RelayCommand DecreaseGroundCommand { get; }
+
+    private Color GroundColor { get; } = Color.FromArgb(200, 125, 184, 68);
+    private string CurrentPreview { get; set; } = "";
     
     public CombineSpritesViewModel()
     {
@@ -70,21 +75,56 @@ public partial class CombineSpritesViewModel : ObservableObject
 
     private void ShowPreview(string fileName)
     {
-        ImageSource = new BitmapImage(new Uri(fileName));
+        var bitmap = new Bitmap(fileName);
+
+        for (var y = 0; y < Ground; y++)
+        {
+            for (var x = 0; x < bitmap.Width; x++)
+            {
+                bitmap.SetPixel(x, bitmap.Height - y - 1, GroundColor);
+            }
+        }
+        
+        ImageSource = ConvertToBitmapImage(bitmap);
     }
 
     private void IncreaseGround()
     {
-        Ground += 1;
+        if (Ground < 100)
+            Ground += 1;
+        
+        ShowPreview(CurrentPreview);
     }
 
     private void DecreaseGround()
     {
-        Ground -= 1;
+        if (Ground > 0)
+            Ground -= 1;
+        
+        ShowPreview(CurrentPreview);
+    }
+
+    private BitmapImage ConvertToBitmapImage(Bitmap bitmap)
+    {
+        using MemoryStream memory = new MemoryStream();
+        // Bitmap in Stream speichern
+        bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+        memory.Position = 0;
+
+        // BitmapImage aus Stream laden
+        BitmapImage bitmapImage = new BitmapImage();
+        bitmapImage.BeginInit();
+            
+        bitmapImage.StreamSource = memory;
+        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+        bitmapImage.EndInit();
+
+        return bitmapImage;
     }
     
     partial void OnSelectedSpriteChanged(KeyValuePair<string, string> value)
     {
+        CurrentPreview = value.Value;
         ShowPreview(value.Value);
     }
 }
