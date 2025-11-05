@@ -17,11 +17,17 @@ public partial class CombineSpritesViewModel : ObservableObject
 
     [ObservableProperty] private ObservableCollection<KeyValuePair<string, string>> _sprites = [];
     [ObservableProperty] private KeyValuePair<string, string> _selectedSprite;
+    [ObservableProperty] private Stretch _previewStretch = Stretch.None;
+    [ObservableProperty] private int _ground = 0;
     public RelayCommand LoadSpritesCommand { get; }
+    public RelayCommand IncreaseGroundCommand { get; }
+    public RelayCommand DecreaseGroundCommand { get; }
     
     public CombineSpritesViewModel()
     {
         LoadSpritesCommand = new RelayCommand(LoadSprites);
+        IncreaseGroundCommand = new RelayCommand(IncreaseGround);
+        DecreaseGroundCommand = new RelayCommand(DecreaseGround);
     }
     
     private void LoadSprites()
@@ -65,6 +71,16 @@ public partial class CombineSpritesViewModel : ObservableObject
     private void ShowPreview(string fileName)
     {
         ImageSource = new BitmapImage(new Uri(fileName));
+    }
+
+    private void IncreaseGround()
+    {
+        Ground += 1;
+    }
+
+    private void DecreaseGround()
+    {
+        Ground -= 1;
     }
     
     partial void OnSelectedSpriteChanged(KeyValuePair<string, string> value)

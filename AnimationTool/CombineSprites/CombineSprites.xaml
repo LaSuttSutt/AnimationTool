@@ -12,27 +12,28 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
+
         <!-- Load Sprites -->
         <Grid Grid.Column="0" Background="Gainsboro">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            
-            <Button Grid.Row="0" 
+
+            <Button Grid.Row="0"
                     Margin="20"
-                    Content="Load Sprites" 
-                    FontSize="{StaticResource MediumFontSize}" 
-                    Command="{Binding LoadSpritesCommand}"/>
-            
-            <ListBox Grid.Row="1" 
-                     Margin="20 0 20 20" 
-                     BorderBrush="Gray" 
+                    Content="Load Sprites"
+                    FontSize="{StaticResource MediumFontSize}"
+                    Command="{Binding LoadSpritesCommand}" />
+
+            <ListBox Grid.Row="1"
+                     Margin="20 0 20 20"
+                     BorderBrush="Gray"
                      BorderThickness="1"
-                     Height="200" 
+                     Height="200"
                      Width="200"
                      ItemsSource="{Binding Sprites}"
                      SelectedItem="{Binding SelectedSprite}">
@@ -42,15 +43,38 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            
+
             <Border Grid.Row="2"
                     BorderBrush="Gray"
                     BorderThickness="1"
-                    Margin="20 0 20 20"
+                    Margin="20 0 20 5"
                     Width="200"
                     Height="200">
-                <Image Source="{Binding ImageSource}" Stretch="None"/>
+                <Image Margin="1"
+                       Source="{Binding ImageSource}"
+                       Stretch="{Binding PreviewStretch}"
+                       VerticalAlignment="Bottom" />
             </Border>
+
+            <Border Grid.Row="2" Margin="21 0 21 6"
+                    Background="{StaticResource MahApps.Brushes.DataGrid.Selection.Background}"
+                    Height="{Binding Ground}"
+                    VerticalAlignment="Bottom">
+            </Border>
+
+            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="20 0 20 20">
+                <ToggleButton Width="40" Content="Zoom"
+                              IsChecked="{Binding PreviewStretch, 
+                              Converter={StaticResource StretchToBoolConverter}}" />
+
+                <Label Content="Ground:" Margin="10 0 0 0" />
+                <Label Content="{Binding Ground, FallbackValue=5}" />
+                <Button Content="+" Width="24"
+                        Command="{Binding IncreaseGroundCommand}" />
+                <Button Content="-" Width="24" Margin="2 0"
+                        Command="{Binding DecreaseGroundCommand}" />
+            </StackPanel>
+
         </Grid>
     </Grid>
 </UserControl>
