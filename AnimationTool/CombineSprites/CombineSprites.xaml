@@ -39,7 +39,7 @@
                      SelectedItem="{Binding SelectedSprite}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Key}" />
+                        <TextBlock Text="{Binding Name}" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -76,247 +76,32 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            
-            <Border BorderBrush="Black" BorderThickness="1" Margin="10">
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Image Height="50" Width="50" />
-                        </Border>
-                    </StackPanel>
+
+            <Border Grid.Row="0" Background="DarkGray" Padding="20">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Rows:"
+                           FontWeight="SemiBold"
+                           FontSize="{StaticResource MediumFontSize}" />
+                    <Label Content="{Binding Rows}"
+                           FontWeight="SemiBold"
+                           FontSize="{StaticResource MediumFontSize}"/>
+                    <Button Content="+" Width="24"
+                            Command="{Binding AddRowCommand}" />
+                    <Button Content="-" Width="24" Margin="2 0"
+                            Command="{Binding RemoveRowCommand}" />
+                    
+                    <Border Width="30" />
+                    
+                    <Label Content="Columns:"
+                           FontWeight="SemiBold"
+                           FontSize="{StaticResource MediumFontSize}" />
+                    <Label Content="{Binding Columns}"
+                           FontWeight="SemiBold"
+                           FontSize="{StaticResource MediumFontSize}"/>
+                    <Button Content="+" Width="24"
+                            Command="{Binding AddColumnCommand}" />
+                    <Button Content="-" Width="24" Margin="2 0"
+                            Command="{Binding RemoveColumnCommand}" />
                 </StackPanel>
             </Border>
         </Grid>
