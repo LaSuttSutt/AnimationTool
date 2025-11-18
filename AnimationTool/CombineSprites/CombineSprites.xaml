@@ -16,19 +16,22 @@
         <!-- Load Sprites -->
         <Grid Grid.Column="0" Background="Gainsboro">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" /> <!-- Load Button -->
+                <RowDefinition Height="Auto" /> <!-- List of Images -->
+                <RowDefinition Height="Auto" /> <!-- Preview -->
+                <RowDefinition Height="Auto" /> <!-- Zoom/Ground -->
+                <RowDefinition Height="Auto" /> <!-- Play animation -->
                 <RowDefinition />
             </Grid.RowDefinitions>
 
+            <!-- Load Button -->
             <Button Grid.Row="0"
                     Margin="20"
                     Content="Load Sprites"
                     FontSize="{StaticResource MediumFontSize}"
                     Command="{Binding LoadSpritesCommand}" />
 
+            <!-- List of Images -->
             <ListBox Grid.Row="1"
                      Margin="20 0 20 20"
                      BorderBrush="Gray"
@@ -44,6 +47,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
+            <!-- Preview -->
             <Border Grid.Row="2"
                     BorderBrush="Gray"
                     BorderThickness="1"
@@ -56,7 +60,8 @@
                        VerticalAlignment="Bottom" />
             </Border>
 
-            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="20 0 20 20">
+            <!-- Zoom/Ground -->
+            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="20 0 20 10">
                 <ToggleButton Width="40" Content="Zoom"
                               IsChecked="{Binding PreviewStretch, 
                               Converter={StaticResource StretchToBoolConverter}}" />
@@ -69,8 +74,22 @@
                         Command="{Binding DecreaseGroundCommand}" />
             </StackPanel>
 
+            <!-- Play animation -->
+            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="20 0 20 0" 
+                        HorizontalAlignment="Center">
+                <Button Content="{Binding PlayBtnText}" 
+                        Command="{Binding TogglePlayAnimationCommand}" />
+                <Label Content="{Binding PlaySpeed}" />
+                <Button Content="+" Width="24" 
+                        Command="{Binding IncreasePlaySpeedCommand}" />
+                <Button Content="-" Width="24" 
+                        Command="{Binding DecreasePlaySpeedCommand}" />
+                <CheckBox Content="Loop" Margin="5 0 0 0" 
+                          IsChecked="{Binding LoopAnimation}"/>
+            </StackPanel>
         </Grid>
 
+        <!-- Create animation Image -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
