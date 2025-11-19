@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AnimationTool.Ui"
              mc:Ignorable="d"
+             Background="Transparent"
              d:DataContext="{d:DesignInstance Type=local:NavigationUcViewModel}"
              d:DesignHeight="300" d:DesignWidth="600">
     <Grid>
@@ -14,22 +15,27 @@
         </Grid.ColumnDefinitions>
 
         <!-- Navigation Buttons -->
-        <Grid Grid.Column="0" Width="300" Background="{StaticResource MahApps.Brushes.Accent3}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" /> <!-- Animations -->
-                <RowDefinition Height="Auto" /> <!-- Multi-File -->
-            </Grid.RowDefinitions>
+        <Border Grid.Column="0" Margin="15" 
+                BorderBrush="{StaticResource BrushBorder}"
+                BorderThickness="2" CornerRadius="20">
             
-            <RadioButton Grid.Row="0"
-                         Style="{DynamicResource NavigationBtn}"
-                         Content="Animations"
-                         Command="{Binding NavToAnimationsCommand}"
-                         IsChecked="True" />
-            <RadioButton Grid.Row="1"
-                         Style="{DynamicResource NavigationBtn}"
-                         Content="Multi-File" />
+            <Grid Width="300" Background="Transparent" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" /> <!-- Animations -->
+                    <RowDefinition Height="Auto" /> <!-- Multi-File -->
+                </Grid.RowDefinitions>
 
-        </Grid>
+                <RadioButton Grid.Row="0"
+                             Style="{DynamicResource NavigationBtn}"
+                             Content="Animations"
+                             Command="{Binding NavToAnimationsCommand}"
+                             IsChecked="True" />
+                <RadioButton Grid.Row="1"
+                             Style="{DynamicResource NavigationBtn}"
+                             Content="Multi-File" />
+
+            </Grid>
+        </Border>
 
         <!-- Content -->
         <ContentControl Grid.Column="1" Content="{Binding SelectedPage}" />
@@ -38,23 +44,22 @@
 
     <UserControl.Resources>
         <Style TargetType="RadioButton" x:Key="NavigationBtn">
-            <Setter Property="Height" Value="40" />
+            <Setter Property="Height" Value="50" />
             <Setter Property="Margin" Value="10 10 10 0" />
             <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
-                        <Border x:Name="NavBorder"
-                                BorderBrush="{StaticResource MahApps.Brushes.Gray1}"
-                                Background="{StaticResource MahApps.Brushes.Accent3}"
-                                BorderThickness="1">
+                        <Border x:Name="NavBorder" 
+                                CornerRadius="25"
+                                Background="Transparent">
 
-                            <Border x:Name="SelectionBorder" Background="Transparent">
+                            <Border x:Name="SelectionBorder" Background="Transparent" CornerRadius="25">
                                 <TextBlock x:Name="NavBtnFont"
                                            Text="{TemplateBinding Content}"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"
-                                           Foreground="White"
+                                           Foreground="{StaticResource BrushBtnWhite}"
                                            FontFamily="Biome"
                                            FontWeight="SemiBold"
                                            FontSize="20" />
@@ -65,15 +70,15 @@
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="NavBorder"
                                         Property="Background"
-                                        Value="{StaticResource MahApps.Brushes.Accent}" />
+                                        Value="{StaticResource BrushBtnWhite}" />
                                 <Setter TargetName="NavBtnFont"
                                         Property="Foreground"
-                                        Value="White" />
+                                        Value="{StaticResource BrushBtnText}" />
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="SelectionBorder"
                                         Property="Background"
-                                        Value="{StaticResource MahApps.Brushes.Accent2}" />
+                                        Value="{StaticResource BrushHover}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
 

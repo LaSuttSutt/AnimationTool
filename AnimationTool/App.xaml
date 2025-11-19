@@ -20,7 +20,20 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <!-- Accent and AppTheme setting -->
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/light.green.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/dark.orange.xaml" />
+                
+                <ResourceDictionary>
+                    <Color x:Key="ColBackBlue1">#001232</Color>
+                    <Color x:Key="ColBackBlue2">#072D56</Color>
+                    <Color x:Key="ColBorder">#10344F</Color>
+                    <SolidColorBrush x:Key="BrushBackBlue1" Color="#001232" />
+                    <SolidColorBrush x:Key="BrushBackBlue2" Color="#072D56" />
+                    <SolidColorBrush x:Key="BrushBorder" Color="#10344F" />
+                    <SolidColorBrush x:Key="BrushBtnWhite" Color="#F3F1F0" />
+                    <SolidColorBrush x:Key="BrushBtnText" Color="#201F36" />
+                    
+                    <SolidColorBrush x:Key="BrushHover" Color="#F3F1F0" Opacity=".1" />
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
