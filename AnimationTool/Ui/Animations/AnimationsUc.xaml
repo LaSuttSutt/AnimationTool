@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="AnimationTool.Ui.Animations.AnimationsUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AnimationTool.Ui.Animations"
+             mc:Ignorable="d"
+             Background="Transparent"
+             d:DataContext="{d:DesignInstance Type=local:AnimationsUcViewModel}"
+             d:DesignHeight="500" d:DesignWidth="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />    <!-- Load Sprites -->
+            <ColumnDefinition />                <!-- Preview & Player -->
+        </Grid.ColumnDefinitions>
+        
+        <!-- Load Sprites -->
+        <Border Grid.Column="0" Margin="0 15 15 15"
+                Style="{StaticResource BorderArea2}">
+            
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />     <!-- Open sprites -->
+                    <RowDefinition />                   <!-- Loaded Sprites -->
+                </Grid.RowDefinitions>
+                
+                <!-- Open sprites -->
+                <Button Grid.Row="0" Style="{StaticResource StandardBtn}"
+                        Content="Open sprites">
+                    
+                </Button>
+                
+                <!-- Loaded Sprites -->
+                <Border Grid.Row="1" Margin="0 15 0 0"
+                        Style="{StaticResource BorderArea3}">
+                    
+                </Border>
+            </Grid>
+        </Border>
+        
+        <!-- Preview & Player -->
+        <Border Grid.Column="1" Margin="0 15 15 15"
+                Style="{StaticResource BorderArea2}">
+            
+        </Border>
+    </Grid>
+</UserControl>

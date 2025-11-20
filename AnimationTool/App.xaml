@@ -20,20 +20,34 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <!-- Accent and AppTheme setting -->
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/dark.orange.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/dark.cobalt.xaml" />
                 
                 <ResourceDictionary>
                     <Color x:Key="ColBackBlue1">#001232</Color>
                     <Color x:Key="ColBackBlue2">#072D56</Color>
+                    <Color x:Key="ColBackBlue3">#1B63FF</Color>
+                    <Color x:Key="ColBackBlue4">#092455</Color>
                     <Color x:Key="ColBorder">#10344F</Color>
                     <SolidColorBrush x:Key="BrushBackBlue1" Color="#001232" />
                     <SolidColorBrush x:Key="BrushBackBlue2" Color="#072D56" />
                     <SolidColorBrush x:Key="BrushBorder" Color="#10344F" />
-                    <SolidColorBrush x:Key="BrushBtnWhite" Color="#F3F1F0" />
+                    <SolidColorBrush x:Key="BrushBorder2" Color="#1B63FF" />
+                    <SolidColorBrush x:Key="BrushBorder3" Color="#073AA4" />
+                    <SolidColorBrush x:Key="BrushBtnWhite" Color="#F3F1F0" Opacity=".9" />
                     <SolidColorBrush x:Key="BrushBtnText" Color="#201F36" />
                     
                     <SolidColorBrush x:Key="BrushHover" Color="#F3F1F0" Opacity=".1" />
+                    <SolidColorBrush x:Key="BrushPress" Color="#F3F1F0" Opacity=".3" />
+                    
+                    <LinearGradientBrush x:Key="BorderGradient" StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="{StaticResource ColBackBlue4}" Offset="0" />
+                        <GradientStop Color="{StaticResource ColBackBlue3}" Offset="1" />
+                    </LinearGradientBrush>
+                    
                 </ResourceDictionary>
+                
+                <ResourceDictionary Source="pack://application:,,,/Styles/Border.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Styles/Button.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

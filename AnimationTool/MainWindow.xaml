@@ -9,9 +9,9 @@
                       Title="Animation Tool" Height="968" Width="1600">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="{StaticResource ColBackBlue1}" Offset="0.0" />
-                <GradientStop Color="{StaticResource ColBackBlue2}" Offset="1.0" />
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="{StaticResource ColBackBlue2}" Offset="0.0" />
+                <GradientStop Color="{StaticResource ColBackBlue4}" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
         

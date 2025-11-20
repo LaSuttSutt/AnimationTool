@@ -9,15 +9,14 @@
              d:DataContext="{d:DesignInstance Type=local:NavigationUcViewModel}"
              d:DesignHeight="300" d:DesignWidth="600">
     <Grid>
-        <Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions> 
             <ColumnDefinition Width="Auto" />   <!-- Navigation Buttons -->
             <ColumnDefinition Width="*" />      <!-- Content -->
         </Grid.ColumnDefinitions>
 
         <!-- Navigation Buttons -->
         <Border Grid.Column="0" Margin="15" 
-                BorderBrush="{StaticResource BrushBorder}"
-                BorderThickness="2" CornerRadius="20">
+                Style="{StaticResource BorderArea}">
             
             <Grid Width="300" Background="Transparent" Margin="20">
                 <Grid.RowDefinitions>
@@ -26,13 +25,16 @@
                 </Grid.RowDefinitions>
 
                 <RadioButton Grid.Row="0"
-                             Style="{DynamicResource NavigationBtn}"
+                             Margin="10"
+                             Style="{StaticResource NavigationBtn}"
                              Content="Animations"
                              Command="{Binding NavToAnimationsCommand}"
                              IsChecked="True" />
                 <RadioButton Grid.Row="1"
-                             Style="{DynamicResource NavigationBtn}"
-                             Content="Multi-File" />
+                             Margin="10 0 10 10"
+                             Style="{StaticResource NavigationBtn}"
+                             Content="Multi-File"
+                             Command="{Binding NavToMultiFileCommand}" />
 
             </Grid>
         </Border>
@@ -41,51 +43,5 @@
         <ContentControl Grid.Column="1" Content="{Binding SelectedPage}" />
 
     </Grid>
-
-    <UserControl.Resources>
-        <Style TargetType="RadioButton" x:Key="NavigationBtn">
-            <Setter Property="Height" Value="50" />
-            <Setter Property="Margin" Value="10 10 10 0" />
-            <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RadioButton">
-                        <Border x:Name="NavBorder" 
-                                CornerRadius="25"
-                                Background="Transparent">
-
-                            <Border x:Name="SelectionBorder" Background="Transparent" CornerRadius="25">
-                                <TextBlock x:Name="NavBtnFont"
-                                           Text="{TemplateBinding Content}"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{StaticResource BrushBtnWhite}"
-                                           FontFamily="Biome"
-                                           FontWeight="SemiBold"
-                                           FontSize="20" />
-                            </Border>
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="NavBorder"
-                                        Property="Background"
-                                        Value="{StaticResource BrushBtnWhite}" />
-                                <Setter TargetName="NavBtnFont"
-                                        Property="Foreground"
-                                        Value="{StaticResource BrushBtnText}" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="SelectionBorder"
-                                        Property="Background"
-                                        Value="{StaticResource BrushHover}" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
 
 </UserControl>
