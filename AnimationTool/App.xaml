@@ -38,6 +38,7 @@
                     
                     <SolidColorBrush x:Key="BrushHover" Color="#F3F1F0" Opacity=".1" />
                     <SolidColorBrush x:Key="BrushPress" Color="#F3F1F0" Opacity=".3" />
+                    <SolidColorBrush x:Key="BrushPress2" Color="#F3F1F0" Opacity=".6" />
                     
                     <LinearGradientBrush x:Key="BorderGradient" StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="{StaticResource ColBackBlue4}" Offset="0" />

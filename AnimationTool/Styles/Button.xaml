@@ -30,8 +30,8 @@
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="NavBorder"
                                     Property="Background"
-                                    Value="{StaticResource BrushPress}" />
-                            <!--<Setter TargetName="NavBorder"
+                                    Value="{StaticResource BrushBtnWhite}" />
+                            <Setter TargetName="NavBorder"
                                     Property="BorderThickness"
                                     Value="2" />
                             <Setter TargetName="NavBorder"
@@ -39,7 +39,7 @@
                                     Value="{StaticResource BrushBackBlue1}" />
                             <Setter TargetName="NavBtnFont"
                                     Property="Foreground"
-                                    Value="{StaticResource BrushBtnText}" />-->
+                                    Value="{StaticResource BrushBtnText}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="SelectionBorder"
