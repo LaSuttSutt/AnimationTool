@@ -13,14 +13,18 @@ public partial class AnimationsUcViewModel : ObservableObject
     [ObservableProperty] private AnimationBitmap? _selectedSprite;
     [ObservableProperty] private Stretch _previewStretch = Stretch.None;
     [ObservableProperty] private ImageSource? _imageSource;
-    
-    [ObservableProperty] private int _ground = 24;
+    [ObservableProperty] private int _ground = 0;
+    private int _zoom = 1;
     
     public RelayCommand LoadSpritesCommand { get; }
+    public RelayCommand<string> SetZoomCommand { get; }
+    public RelayCommand<string> ChangeGroundCommand { get; }
 
     public AnimationsUcViewModel()
     {
         LoadSpritesCommand = new RelayCommand(LoadSprites);
+        SetZoomCommand = new RelayCommand<string>(SetZoom);
+        ChangeGroundCommand = new RelayCommand<string>(ChangeGround);
     }
     
     private void LoadSprites()
@@ -46,7 +50,22 @@ public partial class AnimationsUcViewModel : ObservableObject
     
     private void ShowPreview(AnimationBitmap? selected)
     {
-        ImageSource = selected?.ConvertToBitmapImage(Ground, 4);
+        ImageSource = selected?.ConvertToBitmapImage(Ground, _zoom);
+    }
+
+    private void SetZoom(string? zoom)
+    {
+        if (zoom == null) return;
+        _zoom = int.Parse(zoom);
+        ShowPreview(SelectedSprite);
+    }
+
+    private void ChangeGround(string? value)
+    {
+        if (value == null) return;
+        Ground += int.Parse(value);
+        if (Ground < 0) Ground = 0;
+        ShowPreview(SelectedSprite);
     }
     
     partial void OnSelectedSpriteChanged(AnimationBitmap? value)

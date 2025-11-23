@@ -52,6 +52,43 @@
         </Setter>
     </Style>
 
+    <!-- Radio Button -->
+    <Style TargetType="RadioButton" x:Key="RadioButton">
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border x:Name="CheckBorder" 
+                            Width="{TemplateBinding Width}"
+                            BorderBrush="{StaticResource BrushBorder2}"
+                            BorderThickness="1" CornerRadius="20"
+                            Background="Transparent">
+                        <TextBlock Text="{TemplateBinding Content}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="{StaticResource BrushBtnWhite}"
+                                   FontFamily="Biome"
+                                   FontWeight="SemiBold"
+                                   FontSize="20" />
+                    </Border>
+                        
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="CheckBorder"
+                                    Property="Background"
+                                    Value="{StaticResource BrushHover}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckBorder"
+                                    Property="Background"
+                                    Value="{StaticResource BrushPress}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <!-- Standard Button -->
     <Style TargetType="Button" x:Key="StandardBtn">
         <Setter Property="Height" Value="50" />
@@ -63,7 +100,7 @@
                             CornerRadius="25"
                             BorderThickness="1"
                             BorderBrush="{StaticResource BrushBorder2}"
-                            Background="{StaticResource BrushHover}">
+                            Background="{TemplateBinding Background}">
 
                         <Border x:Name="SelectionBorder" Background="Transparent" CornerRadius="25">
                             <TextBlock x:Name="NavBtnFont"

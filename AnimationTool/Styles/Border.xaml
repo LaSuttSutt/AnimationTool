@@ -18,4 +18,25 @@
         <Setter Property="BorderThickness" Value="1" />
     </Style>
     
+    <Style TargetType="Label" x:Key="BorderLabel">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Label">
+                    <Border Style="{StaticResource BorderArea3}"
+                            Width="{TemplateBinding Width}"
+                            Height="40">
+                        <TextBlock Margin="20 0" 
+                                   Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                   Foreground="{StaticResource BrushBtnWhite}"
+                                   FontFamily="Biome"
+                                   FontWeight="SemiBold"
+                                   FontSize="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 </ResourceDictionary>
