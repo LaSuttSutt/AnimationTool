@@ -4,7 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:AnimationTool.Ui._Controls"
              mc:Ignorable="d"
              Background="{StaticResource BrushBorder3}"
              d:DesignHeight="50" d:DesignWidth="300">
@@ -18,7 +17,7 @@
 
             <!-- Property-Text -->
             <TextBlock Grid.Column="0"
-                       Text="{x:Static local:OptionUc.TestText}"
+                       Text="{Binding Text, ElementName=Root}"
                        Margin="20 0 0 0"
                        FontFamily="Biome"
                        FontWeight="SemiBold"
@@ -28,9 +27,11 @@
 
             <!-- Options -->
             <ListBox Grid.Column="1"
-                     ItemsSource="{x:Static local:OptionUc.TestItems}"
+                     ItemsSource="{Binding Options, ElementName=Root}"
+                     SelectedItem="{Binding SelectedOption, ElementName=Root}"
                      Background="Transparent"
-                     Margin="20 0">
+                     Margin="20 0 0 0"
+                     SelectionMode="Single">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"></StackPanel>
@@ -46,24 +47,42 @@
                                     <Border x:Name="ItemBorder"
                                             BorderBrush="{StaticResource BrushBorder2}"
                                             BorderThickness="1 0 0 0">
-                                        <TextBlock Text="{Binding Key}"
-                                                   Margin="7 5"
-                                                   VerticalAlignment="Center"
-                                                   FontFamily="Biome"
-                                                   FontWeight="SemiBold"
-                                                   FontSize="20" />
+                                        <Border x:Name="HoverBorder">
+                                            <TextBlock x:Name="ItemText" 
+                                                       Text="{Binding Display}"
+                                                       Margin="7 5"
+                                                       VerticalAlignment="Center"
+                                                       FontFamily="Biome"
+                                                       FontWeight="SemiBold"
+                                                       FontSize="20" />
+                                        </Border>
                                     </Border>
-                                    
+
                                     <ControlTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IsLast}" Value="True">
+                                            <Setter TargetName="ItemBorder"
+                                                    Property="CornerRadius"
+                                                    Value="0 20 20 0">
+                                            </Setter>
+                                            <Setter TargetName="HoverBorder"
+                                                    Property="CornerRadius"
+                                                    Value="0 20 20 0">
+                                            </Setter>
+                                            <Setter TargetName="ItemText"
+                                                    Property="Margin"
+                                                    Value="7 5 10 5">
+                                            </Setter>
+                                        </DataTrigger>
+                                        
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="ItemBorder" 
-                                                    Property="Background" 
+                                            <Setter TargetName="HoverBorder"
+                                                    Property="Background"
                                                     Value="{StaticResource BrushHover}" />
                                         </Trigger>
                                         <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="ItemBorder" 
-                                                    Property="Background" 
-                                                    Value="{StaticResource BrushHover}" />
+                                            <Setter TargetName="ItemBorder"
+                                                    Property="Background"
+                                                    Value="{StaticResource BrushPress}" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
@@ -72,7 +91,6 @@
                     </Style>
                 </ListBox.ItemContainerStyle>
             </ListBox>
-
         </Grid>
     </Border>
 </UserControl>

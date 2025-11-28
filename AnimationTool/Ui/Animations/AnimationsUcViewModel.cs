@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Media;
 using AnimationTool.Model;
+using AnimationTool.Ui._Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
@@ -13,20 +14,25 @@ public partial class AnimationsUcViewModel : ObservableObject
     [ObservableProperty] private AnimationBitmap? _selectedSprite;
     [ObservableProperty] private Stretch _previewStretch = Stretch.None;
     [ObservableProperty] private ImageSource? _imageSource;
-    [ObservableProperty] private int _ground = 0;
-    private int _zoom = 1;
-    
+    [ObservableProperty] private int _ground;
+    [ObservableProperty] private OptionUcModel _selectedOption;
+    [ObservableProperty] private List<OptionUcModel> _options;
+
     public RelayCommand LoadSpritesCommand { get; }
-    public RelayCommand<string> SetZoomCommand { get; }
     public RelayCommand<string> ChangeGroundCommand { get; }
 
     public AnimationsUcViewModel()
     {
         LoadSpritesCommand = new RelayCommand(LoadSprites);
-        SetZoomCommand = new RelayCommand<string>(SetZoom);
         ChangeGroundCommand = new RelayCommand<string>(ChangeGround);
+        Options = [
+            new OptionUcModel("1x", 1), 
+            new OptionUcModel("2x", 2), 
+            new OptionUcModel("3x", 3), 
+            new OptionUcModel("4x", 4, true)];
+        SelectedOption = Options[0];
     }
-    
+
     private void LoadSprites()
     {
         var dlg = new OpenFileDialog()
@@ -47,17 +53,10 @@ public partial class AnimationsUcViewModel : ObservableObject
             });
         }
     }
-    
+
     private void ShowPreview(AnimationBitmap? selected)
     {
-        ImageSource = selected?.ConvertToBitmapImage(Ground, _zoom);
-    }
-
-    private void SetZoom(string? zoom)
-    {
-        if (zoom == null) return;
-        _zoom = int.Parse(zoom);
-        ShowPreview(SelectedSprite);
+        ImageSource = selected?.ConvertToBitmapImage(Ground, SelectedOption.Value);
     }
 
     private void ChangeGround(string? value)
@@ -67,10 +66,16 @@ public partial class AnimationsUcViewModel : ObservableObject
         if (Ground < 0) Ground = 0;
         ShowPreview(SelectedSprite);
     }
-    
+
     partial void OnSelectedSpriteChanged(AnimationBitmap? value)
     {
         SelectedSprite = value;
+        ShowPreview(SelectedSprite);
+    }
+
+    // ReSharper disable once UnusedParameterInPartialMethod
+    partial void OnSelectedOptionChanged(OptionUcModel value)
+    {
         ShowPreview(SelectedSprite);
     }
 }

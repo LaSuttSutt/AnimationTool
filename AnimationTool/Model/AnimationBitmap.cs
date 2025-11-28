@@ -34,23 +34,23 @@ public class AnimationBitmap
         if (BitmapFile.Clone() is not Bitmap preview)
             return new BitmapImage();
 
-        var result = new Bitmap(preview.Width * scaleFactor + 2, 
-            preview.Height * scaleFactor + 2, PixelFormat.Format32bppArgb);
-        
+        var result = new Bitmap(preview.Width * scaleFactor,
+            preview.Height * scaleFactor, PixelFormat.Format32bppArgb);
+
         var widthCounter = 0;
         var heightCounter = 0;
         var backColor1 = Color.FromArgb(143, 143, 143);
         var backColor2 = Color.FromArgb(191, 191, 191);
         var startColor = backColor1;
-        
-        for (var x = 1; x < result.Width - 1; x++)
+
+        for (var x = 0; x < result.Width; x++)
         {
             var backColor = startColor;
-            
-            for (var y = 1; y < result.Height - 1; y++)
+
+            for (var y = 0; y < result.Height; y++)
             {
-                var previewCoordX = (x - 1) / scaleFactor;
-                var previewCoordY = (y - 1) / scaleFactor;
+                var previewCoordX = x / scaleFactor;
+                var previewCoordY = y / scaleFactor;
                 var previewColor = preview.GetPixel(previewCoordX, previewCoordY);
                 result.SetPixel(x, y, previewColor.A > 0 ? previewColor : backColor);
 
@@ -69,22 +69,14 @@ public class AnimationBitmap
 
         for (var y = 0; y < groundHeight * scaleFactor; y++)
         {
-            for (var x = 1; x < result.Width - 1; x++)
+            for (var x = 0; x < result.Width; x++)
             {
-                result.SetPixel(x, result.Height - y - 2, Color.FromArgb(125, 125, 184, 68));
-            }
-        }
+                var previewColor = result.GetPixel(x, result.Height - y - 1);
+                var resultColor = Color.FromArgb((int)(125 * .5 + previewColor.R * .5),
+                    (int)(184 * .5 + previewColor.G * .5), (int)(68 * .5 + previewColor.B * .5));
 
-        var borderColor = Color.FromArgb(27, 99, 255);
-        for (var x = 0; x < result.Width; x++)
-        {
-            result.SetPixel(x, 0, borderColor);
-            result.SetPixel(x, result.Height - 1, borderColor);
-        }
-        for (var y = 0; y < result.Height; y++)
-        {
-            result.SetPixel(0, y, borderColor);
-            result.SetPixel(result.Width - 1, y, borderColor);
+                result.SetPixel(x, result.Height - y - 1, resultColor);
+            }
         }
         
         //result.RotateFlip(RotateFlipType.RotateNoneFlipX);
@@ -104,5 +96,14 @@ public class AnimationBitmap
         bitmapImage.EndInit();
 
         return bitmapImage;
+    }
+
+    private Bitmap DrawBackground(int width, int height, int scaleFactor)
+    {
+        var resultBitmap = new Bitmap(width * scaleFactor + 2,
+            height * scaleFactor + 2, PixelFormat.Format32bppArgb);
+
+
+        return resultBitmap;
     }
 }
