@@ -71,7 +71,7 @@ public partial class CombineSpritesViewModel : ObservableObject
 
     private void ShowPreview(AnimationBitmap? selected)
     {
-        ImageSource = selected?.ConvertToBitmapImage(Ground, 1);
+        ImageSource = selected?.ConvertToBitmapImage(Ground, 1, false);
     }
 
     private void IncreaseGround()

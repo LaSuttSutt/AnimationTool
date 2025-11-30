@@ -17,6 +17,7 @@ public partial class AnimationsUcViewModel : ObservableObject
     [ObservableProperty] private int _ground;
     [ObservableProperty] private OptionUcModel _selectedOption;
     [ObservableProperty] private List<OptionUcModel> _options;
+    [ObservableProperty] private bool _flipX;
 
     public RelayCommand LoadSpritesCommand { get; }
     public RelayCommand<string> ChangeGroundCommand { get; }
@@ -35,7 +36,7 @@ public partial class AnimationsUcViewModel : ObservableObject
 
     private void LoadSprites()
     {
-        var dlg = new OpenFileDialog()
+        var dlg = new OpenFileDialog
         {
             Filter = "PNG Files (*.png)|*.png",
             Multiselect = true
@@ -56,7 +57,7 @@ public partial class AnimationsUcViewModel : ObservableObject
 
     private void ShowPreview(AnimationBitmap? selected)
     {
-        ImageSource = selected?.ConvertToBitmapImage(Ground, SelectedOption.Value);
+        ImageSource = selected?.ConvertToBitmapImage(Ground, SelectedOption.Value, FlipX);
     }
 
     private void ChangeGround(string? value)
@@ -75,6 +76,12 @@ public partial class AnimationsUcViewModel : ObservableObject
 
     // ReSharper disable once UnusedParameterInPartialMethod
     partial void OnSelectedOptionChanged(OptionUcModel value)
+    {
+        ShowPreview(SelectedSprite);
+    }
+
+    // ReSharper disable once UnusedParameterInPartialMethod
+    partial void OnFlipXChanged(bool value)
     {
         ShowPreview(SelectedSprite);
     }
