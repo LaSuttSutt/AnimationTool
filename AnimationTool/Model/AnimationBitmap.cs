@@ -8,9 +8,12 @@ namespace AnimationTool.Model;
 
 public class AnimationBitmap
 {
-    public string PngFileName { get; set; } = "";
-    public string Name { get; set; } = "";
+    public string PngFileName { get; init; } = "";
+    public string Name { get; init; } = "";
 
+    [JsonIgnore]
+    public BitmapImage? ImageSource { get; set; }
+    
     [JsonIgnore]
     private Bitmap BitmapFile
     {
@@ -31,6 +34,9 @@ public class AnimationBitmap
 
     public BitmapImage ConvertToBitmapImage(int groundHeight, int scaleFactor, bool flipX)
     {
+        if (ImageSource != null)
+            return ImageSource;
+        
         if (BitmapFile.Clone() is not Bitmap preview)
             return new BitmapImage();
 
@@ -54,6 +60,7 @@ public class AnimationBitmap
         bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
         bitmapImage.EndInit();
 
+        ImageSource = bitmapImage;
         return bitmapImage;
     }
 

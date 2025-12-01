@@ -130,4 +130,46 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <!-- Toggle Button -->
+    <Style TargetType="ToggleButton" x:Key="ToggleBtn">
+        <Setter Property="Height" Value="40" />
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="NavBorder"
+                            CornerRadius="20"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource BrushBorder2}"
+                            Background="{TemplateBinding Background}">
+
+                        <Border x:Name="SelectionBorder" Background="Transparent" CornerRadius="20">
+                            <TextBlock x:Name="NavBtnFont"
+                                       Text="{TemplateBinding Content}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="{StaticResource BrushBtnWhite}"
+                                       FontFamily="Biome"
+                                       FontWeight="SemiBold"
+                                       FontSize="20" />
+                        </Border>
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="NavBorder"
+                                    Property="Background"
+                                    Value="{StaticResource BrushPress}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="SelectionBorder"
+                                    Property="Background"
+                                    Value="{StaticResource BrushHover}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

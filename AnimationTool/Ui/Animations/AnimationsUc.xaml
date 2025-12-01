@@ -102,9 +102,9 @@
                 <Border Grid.Row="0" Margin="0 0 0 20"
                         Style="{StaticResource BorderArea3}">
                     <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical" Margin="10">
+                        <StackPanel Orientation="Vertical" Margin="20 20 10 20">
 
-                            <ctrl:OptionUc Background="Transparent" Margin="0 10 0 0"
+                            <ctrl:OptionUc Background="Transparent" Margin="0 0 0 0"
                                            Text="Zoom:"
                                            Options="{Binding Options}"
                                            SelectedOption="{Binding SelectedOption, Mode=TwoWay}" />
@@ -118,9 +118,9 @@
                                                   ChangeValueDownParameter="-1" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Margin="10">
-                            <ctrl:CheckBoxUc IsChecked="{Binding FlipX, Mode=TwoWay}" 
+                            <ctrl:CheckBoxUc IsChecked="{Binding FlipX, Mode=TwoWay}"
                                              CheckBoxLabel="FlipX:"
-                                             Background="Transparent" 
+                                             Background="Transparent"
                                              Margin="0 10 0 0" />
                         </StackPanel>
                     </StackPanel>
@@ -132,7 +132,7 @@
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Setter Property="Visibility" Value="Visible" />
-                                
+
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Source, ElementName=PreviewImage}" Value="{x:Null}">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -140,15 +140,30 @@
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
-                        
+
                         <Image x:Name="PreviewImage" Source="{Binding ImageSource}"
                                Stretch="{Binding PreviewStretch}"
                                VerticalAlignment="Center" />
                     </Border>
                 </Border>
 
-                <Border Grid.Row="2" Height="100" Margin="0 20 0 0"
-                        Style="{StaticResource BorderArea3}" />
+                <Border Grid.Row="2" Margin="0 20 0 0"
+                        Style="{StaticResource BorderArea3}">
+                    <StackPanel Orientation="Horizontal" Margin="20 20 10 20">
+                        <ToggleButton Style="{StaticResource ToggleBtn}"
+                                      Width="100"
+                                      Content="Play"
+                                      IsChecked="{Binding PlayAnimation}"
+                                      Background="{StaticResource BrushHover}" />
+                        <ctrl:NumericUpDownUc Background="Transparent" Margin="20 0 0 0" Width="190"
+                                              FieldName="Speed:" Text="{Binding AnimationSpeed}"
+                                              ChangeValueCommand="{Binding ChangeAnimationSpeedCommand}"
+                                              ChangeValueUpParameter="0.05" ChangeValueDownParameter="-0.05" />
+                        <ctrl:CheckBoxUc Background="Transparent" Margin="20 0 0 0"
+                                         CheckBoxLabel="Loop:" 
+                                         IsChecked="{Binding LoopAnimation, Mode=TwoWay}" />
+                    </StackPanel>
+                </Border>
             </Grid>
         </Border>
     </Grid>
