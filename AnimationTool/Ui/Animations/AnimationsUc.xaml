@@ -9,14 +9,14 @@
              Background="Transparent"
              d:DataContext="{d:DesignInstance Type=local:AnimationsUcViewModel}"
              d:DesignHeight="500" d:DesignWidth="1200">
-    <Grid>
+    <Grid Margin="15 0 15 15">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="500" />    <!-- Load Sprites -->
             <ColumnDefinition />                <!-- Preview & Player -->
         </Grid.ColumnDefinitions>
 
         <!-- Load Sprites -->
-        <Border Grid.Column="0" Margin="0 15 15 15"
+        <Border Grid.Column="0" Margin="0"
                 Style="{StaticResource BorderArea2}">
 
             <Grid Margin="20">
@@ -90,7 +90,7 @@
         </Border>
 
         <!-- Preview & Player -->
-        <Border Grid.Column="1" Margin="0 15 15 15"
+        <Border Grid.Column="1" Margin="15 0 0 0"
                 Style="{StaticResource BorderArea2}">
             <Grid Margin="20">
                 <Grid.RowDefinitions>
@@ -128,7 +128,8 @@
 
                 <Border Grid.Row="1" Style="{StaticResource BorderArea3}">
                     <Border BorderThickness="1" BorderBrush="{StaticResource BrushBorder2}"
-                            VerticalAlignment="Center" HorizontalAlignment="Center">
+                            VerticalAlignment="Center" HorizontalAlignment="Center"
+                            Margin="10">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Setter Property="Visibility" Value="Visible" />

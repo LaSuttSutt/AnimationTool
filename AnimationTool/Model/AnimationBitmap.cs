@@ -40,12 +40,12 @@ public class AnimationBitmap
         if (BitmapFile.Clone() is not Bitmap preview)
             return new BitmapImage();
 
+        if (flipX) preview.RotateFlip(RotateFlipType.RotateNoneFlipX);
+        
         var resultBitmap = CreateBitmapAndDrawBackground(preview.Width, preview.Height, scaleFactor);
         DrawGroundToBitmap(resultBitmap, groundHeight, scaleFactor);
         DrawPreviewToBitmap(resultBitmap, preview, scaleFactor);
         
-        if (flipX) resultBitmap.RotateFlip(RotateFlipType.RotateNoneFlipX);
-
         using var memory = new MemoryStream();
 
         // Bitmap in Stream speichern

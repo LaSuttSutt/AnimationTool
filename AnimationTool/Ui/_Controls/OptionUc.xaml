@@ -40,11 +40,11 @@
 
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
-                        <Setter Property="Height" Value="38" />
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="ListBoxItem">
                                     <Border x:Name="ItemBorder"
+                                            Background="Transparent"
                                             BorderBrush="{StaticResource BrushBorder2}"
                                             BorderThickness="1 0 0 0">
                                         <Border x:Name="HoverBorder">

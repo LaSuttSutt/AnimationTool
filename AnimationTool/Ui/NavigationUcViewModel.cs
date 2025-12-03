@@ -9,6 +9,8 @@ namespace AnimationTool.Ui;
 public partial class NavigationUcViewModel : ObservableObject
 {
     [ObservableProperty] private UserControl _selectedPage = new();
+    [ObservableProperty] private string _selectedTab = "Animations";
+    [ObservableProperty] private List<string> _tabNames = ["Animations", "Multi-File"];
     public RelayCommand NavToAnimationsCommand { get; }
     public RelayCommand NavToMultiFileCommand { get; }
     
@@ -32,5 +34,18 @@ public partial class NavigationUcViewModel : ObservableObject
     private void NavigateToMultiFile()
     {
         SelectedPage = _multiFileUc;
+    }
+
+    partial void OnSelectedTabChanged(string value)
+    {
+        switch (value)
+        {
+            case "Animations":
+                NavigateToAnimations();
+                break;
+            case "Multi-File":
+                NavigateToMultiFile();
+                break;
+        }
     }
 }

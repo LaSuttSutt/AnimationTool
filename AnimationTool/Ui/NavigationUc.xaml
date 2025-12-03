@@ -4,43 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AnimationTool.Ui"
+             xmlns:controls="clr-namespace:AnimationTool.Ui._Controls"
              mc:Ignorable="d"
              Background="Transparent"
              d:DataContext="{d:DesignInstance Type=local:NavigationUcViewModel}"
-             d:DesignHeight="300" d:DesignWidth="600">
+             d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
-        <Grid.ColumnDefinitions> 
-            <ColumnDefinition Width="Auto" />   <!-- Navigation Buttons -->
-            <ColumnDefinition Width="*" />      <!-- Content -->
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />   <!-- Navigation Buttons -->
+            <RowDefinition Height="*" />      <!-- Content -->
+        </Grid.RowDefinitions>
 
         <!-- Navigation Buttons -->
-        <Border Grid.Column="0" Margin="15" 
-                Style="{StaticResource BorderArea}">
-            
-            <Grid Width="300" Background="Transparent" Margin="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" /> <!-- Animations -->
-                    <RowDefinition Height="Auto" /> <!-- Multi-File -->
-                </Grid.RowDefinitions>
+        <Border Grid.Row="0" Margin="15"
+                Style="{StaticResource BorderArea2}">
 
-                <RadioButton Grid.Row="0"
-                             Margin="10"
-                             Style="{StaticResource NavigationBtn}"
-                             Content="Animations"
-                             Command="{Binding NavToAnimationsCommand}"
-                             IsChecked="True" />
-                <RadioButton Grid.Row="1"
-                             Margin="10 0 10 10"
-                             Style="{StaticResource NavigationBtn}"
-                             Content="Multi-File"
-                             Command="{Binding NavToMultiFileCommand}" />
-
-            </Grid>
+            <controls:TabUc Margin="20"
+                            TabNames="{Binding TabNames}"
+                            SelectedTab="{Binding SelectedTab, Mode=TwoWay}" />
         </Border>
 
         <!-- Content -->
-        <ContentControl Grid.Column="1" Content="{Binding SelectedPage}" />
+        <ContentControl Grid.Row="1" Content="{Binding SelectedPage}" />
 
     </Grid>
 

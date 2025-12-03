@@ -15,6 +15,13 @@
             </LinearGradientBrush>
         </Grid.Background>
         
-        <nav:NavigationUc />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Border Grid.Column="0" Margin="15 15 0 15"
+                Style="{StaticResource BorderArea}"></Border>
+        <nav:NavigationUc Grid.Column="1" />
     </Grid>
 </controls:MetroWindow>
