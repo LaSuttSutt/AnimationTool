@@ -4,7 +4,7 @@
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                      xmlns:nav="clr-namespace:AnimationTool.Ui"
+                      xmlns:ui="clr-namespace:AnimationTool.Ui"
                       mc:Ignorable="d"
                       Title="Animation Tool" Height="968" Width="1600">
     <Grid>
@@ -20,8 +20,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         
-        <Border Grid.Column="0" Margin="15 15 0 15"
-                Style="{StaticResource BorderArea}"></Border>
-        <nav:NavigationUc Grid.Column="1" />
+        <ui:ProjectsUc Grid.Column="0" Margin="15 15 0 15" />
+        <ui:NavigationUc Grid.Column="1" />
     </Grid>
 </controls:MetroWindow>
