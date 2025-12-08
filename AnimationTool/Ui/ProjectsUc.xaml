@@ -88,60 +88,24 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="ListBoxItem">
-                                                <Border Height="40" BorderThickness="0 0 0 1"
-                                                        CornerRadius="20"
-                                                        BorderBrush="{StaticResource BrushBorder2 }"
-                                                        Background="Transparent" Margin="10 5 10 0">
-                                                    <Border x:Name="SelectionBorder" Background="Transparent"
-                                                            CornerRadius="20">
-                                                        <StackPanel Margin="20 0" Orientation="Horizontal">
-                                                            <ctrls:LabelStd x:Name="TxtBlock"
-                                                                            Visibility="Visible"
-                                                                            Text="{Binding Project.Name}" />
-                                                            <TextBox x:Name="TxtBox"
-                                                                     Background="Transparent"
-                                                                     BorderThickness="0"
-                                                                     Visibility="Collapsed"
-                                                                     Text="{Binding Project.Name, Mode=TwoWay}"
-                                                                     FontFamily="Biome"
-                                                                     FontWeight="SemiBold"
-                                                                     FontStyle="Italic"
-                                                                     FontSize="20"
-                                                                     VerticalAlignment="Center"
-                                                                     Foreground="{StaticResource BrushBtnWhite}" />
-                                                        </StackPanel>
-                                                    </Border>
-                                                </Border>
-
+                                                <ctrls:TextBoxUc x:Name="ProjectItem" 
+                                                                 Text="{Binding Project.Name}" />
+                                                
                                                 <ControlTemplate.Triggers>
-                                                    <DataTrigger Binding="{Binding EditMode}" Value="True">
-                                                        <Setter TargetName="TxtBlock"
-                                                                Property="Visibility"
-                                                                Value="Collapsed" />
-                                                        <Setter TargetName="TxtBox"
-                                                                Property="Visibility"
-                                                                Value="Visible" />
-                                                    </DataTrigger>
-
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter TargetName="SelectionBorder"
-                                                                Property="Background"
-                                                                Value="{StaticResource BrushHover}" />
-                                                    </Trigger>
-
                                                     <Trigger Property="IsSelected" Value="True">
-                                                        <Setter TargetName="SelectionBorder"
-                                                                Property="Background"
-                                                                Value="{StaticResource BrushPress}" />
+                                                        <Setter TargetName="ProjectItem"
+                                                                Property="IsSelected"
+                                                                Value="True" />
                                                     </Trigger>
                                                 </ControlTemplate.Triggers>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
                                 </Style>
+                                
+                                
                             </ListBox.ItemContainerStyle>
                         </ListBox>
-
                         <ctrls:TextBoxUc Text="Hallo"></ctrls:TextBoxUc>
                     </StackPanel>
 
