@@ -6,6 +6,7 @@ public partial class ProjectsUc : UserControl
 {
     public ProjectsUc()
     {
+        DataContext = new ProjectsUcViewModel();
         InitializeComponent();
     }
 }

@@ -5,6 +5,7 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:ui="clr-namespace:AnimationTool.Ui"
+                      WindowStartupLocation="CenterScreen"
                       mc:Ignorable="d"
                       Title="Animation Tool" Height="968" Width="1600">
     <Grid>

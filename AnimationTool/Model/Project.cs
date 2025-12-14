@@ -1,7 +1,9 @@
-﻿namespace AnimationTool.Model;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-public class Project
+namespace AnimationTool.Model;
+
+public partial class Project : ObservableObject
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public string Name { get; set; } = "New project";
+    [ObservableProperty] private  string _name = "New project";
 }

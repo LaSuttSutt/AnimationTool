@@ -25,48 +25,35 @@
                                     CornerRadius="20">
                                 <Grid Margin="20 0 0 0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />      <!-- Text -->
+                                        <ColumnDefinition Width="Auto" />   <!-- Button -->
                                     </Grid.ColumnDefinitions>
 
-                                    <local:LabelStd Grid.Column="0" Text="{Binding Text, ElementName=Root}" />
+                                    <!-- Text -->
+                                    <local:LabelStd Grid.Column="0" Text="{Binding Text, ElementName=Root, Mode=TwoWay}"
+                                                    Visibility="{Binding ReadMode, ElementName=Root}" />
+                                    <TextBox Grid.Column="0" IsVisibleChanged="UIElement_OnIsVisibleChanged"
+                                             Text="{Binding Text, ElementName=Root, Mode=TwoWay}"
+                                             Visibility="{Binding EditMode, ElementName=Root}"
+                                             Style="{StaticResource ListTextBox}"
+                                             KeyDown="UIElement_OnKeyDown">
+                                    </TextBox>
 
-                                    <Button x:Name="EditBtn" Grid.Column="1" Visibility="Collapsed">
-                                        <Button.Style>
-                                            <Style TargetType="Button">
-                                                <Setter Property="Template">
-                                                    <Setter.Value>
-                                                        <ControlTemplate TargetType="Button">
-                                                            <Border x:Name="BtnBorder"
-                                                                    BorderThickness="1" Width="34" Height="34"
-                                                                    CornerRadius="17" Margin="0 0 4 0"
-                                                                    Background="{StaticResource BrushBorder3}"
-                                                                    BorderBrush="{StaticResource BrushBorder2}">
-                                                                <Path
-                                                                    Data="M 24,7 L 27,11 L 13,23 L 8,24 L 10,19 L 24,7 M 24,10 L 12,20"
-                                                                    Stroke="{StaticResource BrushBtnWhite}"
-                                                                    StrokeThickness="1" />
-                                                            </Border>
-
-                                                            <ControlTemplate.Triggers>
-                                                                <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter TargetName="BtnBorder"
-                                                                            Property="Background"
-                                                                            Value="{StaticResource BrushHover}" />
-                                                                </Trigger>
-                                                                <Trigger Property="IsPressed" Value="True">
-                                                                    <Setter TargetName="BtnBorder"
-                                                                            Property="Background"
-                                                                            Value="{StaticResource BrushPress}" />
-                                                                </Trigger>
-                                                            </ControlTemplate.Triggers>
-                                                        </ControlTemplate>
-                                                    </Setter.Value>
-                                                </Setter>
-                                            </Style>
-                                        </Button.Style>
-                                    </Button>
-
+                                    <!-- Button -->
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                        <Button Style="{StaticResource EditButton}"
+                                                x:Name="EditBtn"
+                                                Visibility="Collapsed"
+                                                Command="{Binding OnStartEditMode, ElementName=Root}"
+                                                CommandParameter="{Binding Tag, ElementName=Root}"
+                                                Click="EditBtn_OnClick">
+                                        </Button>
+                                        <Button Style="{StaticResource OkButton}"
+                                                x:Name="OkBtn"
+                                                Visibility="Collapsed"
+                                                Click="OkBtn_OnClick">
+                                        </Button>
+                                    </StackPanel>
                                 </Grid>
                             </Border>
                         </Border>
@@ -86,11 +73,18 @@
                             <DataTrigger Value="True">
                                 <DataTrigger.Binding>
                                     <MultiBinding Converter="{StaticResource IsSelectedAndMouseOverConverter}">
+                                        <Binding Path="ReadMode" ElementName="Root" />
                                         <Binding Path="IsSelected" ElementName="Root" />
                                         <Binding Path="IsMouseOver" RelativeSource="{RelativeSource Self}" />
                                     </MultiBinding>
                                 </DataTrigger.Binding>
                                 <Setter TargetName="EditBtn"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding EditMode, ElementName=Root}" Value="Visible">
+                                <Setter TargetName="OkBtn"
                                         Property="Visibility"
                                         Value="Visible" />
                             </DataTrigger>
